@@ -1,0 +1,28 @@
+class Solution {
+    public boolean validPalindrome(String s) {
+        int l = 0, r = s.length()-1;
+        if(isPalindrome(s, l, r)){
+            return true;
+        }
+        while (l < r) {
+            if (s.charAt(l) != s.charAt(r)) {
+                return isPalindrome(s, l + 1, r) ||
+                       isPalindrome(s, l, r - 1);
+            }
+            l++;
+            r--;
+        }
+        return false;
+    }
+
+    public boolean isPalindrome(String s, int l, int r){
+        while (l<=r){
+            if(s.charAt(l)!=s.charAt(r)){
+                return false;
+            }
+            l++;
+            r--;
+        }
+        return true;
+    }
+}
